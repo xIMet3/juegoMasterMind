@@ -1,0 +1,30 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.juegoentero {
+    height: 100%;
+    background-color: black;
+    place-items: center;
+    display: grid;
+}
+
+.partesuperior, .parteinferior {
+    height: 4.68em;
+    width: 21.88em;
+    border-radius: 0.625em;
+}
+
+.partesuperior, .centrotablero, .parteinferior {
+    background-image: url(../img/fondoMadera.jpg);
+    margin: 0;
+}
+
+.partesuperior {
+    display: grid;
+    border-bottom: 0.125em;
+    margin-top: 1.875em;
+    place-items: center;
+}
+
