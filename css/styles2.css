@@ -1,0 +1,170 @@
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  .juegoentero {
+    height: 100%;
+    background-color: #000;
+    display: grid;
+    place-items: center;
+  }
+  
+  .nombrecabecera {
+    color: white;
+    margin-top: 1em;
+    font-size: 2.5em;
+  }
+  
+  /* Fondo del tablero imitacion madera */
+  .partesuperior, .centrotablero, .bottom {
+    margin: 0;
+    background-image: url(../img/fondoMaderaClara.jpg)
+  }
+  
+  .partesuperior, .bottom {
+    width: 22em;
+    height: 4.6875em;
+  }
+  
+  /* Parte superior que contiene el panel donde se mostrara la combinacion secreta */
+  .partesuperior {
+    margin-top: 1.875em;
+    border-bottom: 0.125em solid  black;
+    display: grid;
+    place-items: center;
+  }
+  
+  .combsecreta {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 3.125em;
+    width: 15em;
+    background-color: #424242;
+    border-radius: 0.625em;
+  }
+  
+  .combsecreta > span {
+    width: 2.4em;
+    height: 2.4em;
+    margin: 0 0.625em;
+    border-radius: 1.25em;
+    border: 0.0625em solid black;
+    display: none;
+  }
+  
+  .color-uno {
+    display: block;
+  }
+  
+  .centrotablero {
+    width: 22em;
+    height: 35em;
+  }
+  /* La cuadricula que se divide en 5 columnas y 10 filas */
+  .grid {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(10, 1fr);
+  }
+  .grid > * {
+    border: 0.0625em solid black;
+    display: grid;
+    place-items: center;
+  }
+  
+  /* Tablero central que contiene todas las casillas para los colores elegidos*/
+  .dots1, .dots2, .dots3, .dots4, .dots5, .dots6, .dots7, .dots8, .dots9, .dots10 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    padding: 0.3125em 0.625em;
+  }
+  /* El "> div" lo uso para que afecte tambien a los hijos de este */
+  .dots1 > div, .dots2 > div, .dots3 > div, .dots4 > div, .dots5 > div, .dots6 > div, .dots7 > div, .dots8 > div, .dots9 > div, .dots10 > div {
+    width: 0.63em;
+    height: 0.63em;
+    border: 0.125em solid black;
+    border-radius: 1.25em; 
+  }
+  
+  #circular {
+    width: 1.5625em;
+    height: 1.5625em;
+    border-radius: 1.25em;
+    box-shadow: inset 0 0.0625em 0.0625em 0.03125em #070707;
+  }
+  
+  /* Botones inferiores con selector de colores, borrar y aceptar */
+  .bottom {
+    margin-bottom: 3.125em;
+    border-bottom: 0.3125em solid black;
+    border-top: 0.125em solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .bottom > span {
+    width: 1.6875em;
+    height: 1.6875em;
+    margin: 0 0.4375em;
+    border: 0.125em solid #9E9E9E;
+    border-radius: 1.25em;
+  }
+  .bottom > span:hover {
+    cursor: pointer;
+  }
+  .bottom > span:active {
+    transform: scale(1);
+  }
+  
+  /* Colores de los botones */
+  .rojo {
+    background-color: red;
+  }
+  
+  .amarillo {
+    background-color: yellow;
+  }
+  
+  .verde {
+    background-color: green;
+  }
+  
+  .azul {
+    background-color: blue;
+  }
+  
+  .negro {
+    background-color: black;
+  }
+
+  .naranja {
+    background-color: orange;
+  }
+  
+  
+  #aceptar1 {
+    width: 2em;
+    height: 2em;
+    display: grid;
+    place-items: center;
+    color: white;
+    background-color:#7cb342 
+  }
+
+  #borrar1 {
+    width: 2em;
+    height: 2em;
+    display: grid;
+    place-items: center;
+    font-weight: bolder;
+    background-color: white;
+  }
+ 
+  
