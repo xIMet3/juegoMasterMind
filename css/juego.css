@@ -159,7 +159,8 @@ body {
     display: grid;
     place-items: center;
     color: white;
-    background-color:#7cb342 
+    background-color:#7cb342; 
+    user-select: none; 
   }
 
   #borrar1 {
@@ -169,6 +170,7 @@ body {
     place-items: center;
     font-weight: bolder;
     background-color: white;
+    user-select: none;
   }
  
   
