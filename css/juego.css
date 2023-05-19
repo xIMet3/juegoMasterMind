@@ -5,17 +5,13 @@ body {
   }
   
   .juegoentero {
-    height: 100%;
-    background-color: #000;
+    height: 100vh;
+    background-image: url(../img/fondoCalamarTablero.jpg);
     display: grid;
     place-items: center;
   }
   
-  .nombrecabecera {
-    color: white;
-    margin-top: 1em;
-    font-size: 2.5em;
-  }
+  
   
   /* Fondo del tablero imitacion madera */
   .partesuperior, .centrotablero, .bottom {
