@@ -13,16 +13,19 @@ body {
   padding: 0;
 }
 
-.nombrecabecera {
-  height: 50%;
-  
-}
-
+/* Div superio que contiene el nombre de cabecera*/
 .fondoprincipal {
   position: relative;
+  background-color: black;
   width: 100%;
   height: 100%;
-  overflow: hidden;
+  overflow-x: hidden;
+  display: flex;
+  justify-content: center;
+}
+
+.nombrecabecera {
+  height: 50%;
 }
 
 #fondocalamar {
@@ -30,6 +33,12 @@ body {
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+/* Adaptando la imagen de fondo a los distintos tamaños de pantalla */
+@media only screen and (min-width: 1200px) {
+  #fondocalamar {
+    object-fit: unset;
+  }
 }
 
 .contenido {
@@ -42,12 +51,8 @@ body {
 
 .cabecera {
   height: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
-
-
+/* Div inferior que contiene la elección de dificultades*/
 #contenidoDificultades {
   height: 50%;
   display: flex;
@@ -63,13 +68,12 @@ body {
   justify-content: space-evenly;
   margin-top: 2em;
   overflow: hidden;
-
 }
-
+/* Botones de dificultades */
 .btn-link {
   margin: 0.4em;
 }
 
 .btn-link:hover {
-  transform: scale(1.1);
+  transform: scale(1.2);
 }
