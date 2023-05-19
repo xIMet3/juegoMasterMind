@@ -1,16 +1,21 @@
 body {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  
-  .juegoentero {
-    height: 100vh;
-    background-image: url(../img/fondoCalamarTablero.jpg);
-    display: grid;
-    place-items: center;
-  }
-  
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.juegoentero {
+  height: 100vh;
+  background-image: url(../img/fondoCalamarTablero.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: nowrap;
+  flex-direction: column;
+}
+
   
   
   /* Fondo del tablero imitacion madera */
@@ -120,7 +125,7 @@ body {
     cursor: pointer;
   }
   .bottom > span:active {
-    transform: scale(1);
+    transform: scale(2);
   }
   
   /* Colores de los botones */
@@ -150,8 +155,8 @@ body {
   
   
   #aceptar1 {
-    width: 2em;
-    height: 2em;
+    width: 3em;
+    height: 3em;
     display: grid;
     place-items: center;
     color: white;
@@ -160,8 +165,8 @@ body {
   }
 
   #borrar1 {
-    width: 2em;
-    height: 2em;
+    width: 3em;
+    height: 3em;
     display: grid;
     place-items: center;
     font-weight: bolder;
