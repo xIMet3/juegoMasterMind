@@ -13,6 +13,11 @@ body {
   padding: 0;
 }
 
+.nombrecabecera {
+  height: 50%;
+  
+}
+
 .fondoprincipal {
   position: relative;
   width: 100%;
