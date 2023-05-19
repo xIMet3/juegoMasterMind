@@ -5,13 +5,14 @@ body {
   }
   
   .juegoentero {
-    min-height: 100vh;
+    height: 100vh;
     background-image: url(../img/fondoCalamarTablero.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-wrap: nowrap;
     flex-direction: column;
   }
   
@@ -64,11 +65,11 @@ body {
   }
   
   
-  /* La cuadrícula que se divide en 5 columnas y 10 filas */
+  /* La cuadrícula que se divide en 5 columnas y 8 filas */
   .grid {
-      width: 100%;
-      height: 100%;
-      display: grid;
+    width: 100%;
+    height: 100%;
+    display: grid;
     grid-template-columns: repeat(5, 1fr);
     grid-template-rows: repeat(8, 1fr);
   }
@@ -136,7 +137,7 @@ body {
   }
   
   .bottom > span:active {
-    transform: scale(2);
+    transform: scale(1.2);
   }
   
   /* Colores de los botones */
@@ -180,7 +181,6 @@ body {
     height: 3em;
     display: grid;
     place-items: center;
-    font-weight: bolder;
     background-color: white;
     user-select: none;
   }

@@ -16,16 +16,17 @@ body {
   flex-direction: column;
 }
 
-  
-  
   /* Fondo del tablero imitacion madera */
   .partesuperior, .centrotablero, .bottom {
     margin: 0;
-    background-image: url(../img/fondoMaderaClara.jpg)
+    background-image: url(../img/fondoMaderaClara.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
   }
   
   .partesuperior, .bottom {
-    width: 22em;
+    width: 90%;
+    max-width: 22em;
     height: 4.6875em;
   }
   
@@ -33,8 +34,9 @@ body {
   .partesuperior {
     margin-top: 1.2em;
     border-bottom: 0.125em solid  black;
-    display: grid;
-    place-items: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     border-top-left-radius: 1.25em;
     border-top-right-radius: 1.25em;
   }
@@ -62,10 +64,6 @@ body {
     display: block;
   }
   
-  .centrotablero {
-    width: 22em;
-    height: 35em;
-  }
   /* La cuadricula que se divide en 5 columnas y 10 filas */
   .grid {
     width: 100%;
@@ -81,6 +79,13 @@ body {
   }
   
   /* Tablero central que contiene todas las casillas para los colores elegidos*/
+
+  .centrotablero {
+    width: 90%;
+    max-width: 22em;
+    height: 35em;
+  }
+
   .dots1, .dots2, .dots3, .dots4, .dots5, .dots6, .dots7, .dots8, .dots9, .dots10 {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -125,7 +130,7 @@ body {
     cursor: pointer;
   }
   .bottom > span:active {
-    transform: scale(2);
+    transform: scale(1.2);
   }
   
   /* Colores de los botones */
