@@ -1,0 +1,57 @@
+body {
+  background-color: #161414;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.conjuntoSelector {
+  max-width: 30em;
+  padding: 2em;
+  text-align: center;
+}
+
+.selecciona {
+  margin-bottom: 1em;
+}
+
+.botones {
+  display: flex;
+  justify-content: center;
+}
+
+#select-button {
+  margin-left: 1.5em;
+}
+
+#delete-button {
+  margin-left: 0.75em;
+}
+
+.selected-color {
+  width: 4em;
+  height: 4em;
+  border: 1px solid black;
+}
+
+#selected-colors-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 2em;
+}
+
+.selected-color {
+  width: 2em;
+  height: 2em;
+  margin: 0.5em;
+  border: 1px solid black;
+}
+
+#muestraColor {
+  width: 100%;
+}
