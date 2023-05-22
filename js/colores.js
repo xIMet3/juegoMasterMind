@@ -49,7 +49,7 @@ function handleSelect() {
     if (selectedColors.length === getMaximumColors(difficulty)) {
       selectButton.disabled = true;
       sessionStorage.setItem("selectedColors", JSON.stringify(selectedColors));
-      window.location.href = "URL_DESTINO"; // Reemplaza "URL_DESTINO" con la URL a la que deseas redirigir
+      window.location.href = "../pages/juegoIntermedio.html";
     }
   }
 }
