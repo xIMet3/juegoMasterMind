@@ -27,13 +27,13 @@
                                 <img src="./img/eligeDificultad2.png" class="img-fluid">
                             </div>
                             <div class="d-flex flex-column">
-                                <a href="#" class="btn-link">
+                                <a href="./pages/colores.html" onclick="setDifficulty('facil')" class="btn-link">
                                     <img src="./img/facil.png" class="button-image">
                                 </a>
-                                <a href="#" class="btn-link">
+                                <a href="./pages/colores.html" onclick="setDifficulty('intermedio')" class="btn-link">
                                     <img src="./img/intermedio.png" class="button-image">
                                 </a>
-                                <a href="#" class="btn-link">
+                                <a href="./pages/colores.html" onclick="setDifficulty('dificil')" class="btn-link">
                                     <img src="./img/dificil.png" class="button-image">
                                 </a>
                             </div>
@@ -44,5 +44,10 @@
         </div>
     </div>     
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+<script>
+    function setDifficulty(difficulty) {
+        sessionStorage.setItem("difficulty", difficulty);
+    }
+</script>
 </body>
 </html>

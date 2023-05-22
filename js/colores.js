@@ -1,5 +1,5 @@
 const colorPicker = document.getElementById("color-picker");
-const colorPreview = document.querySelector(".selected-color");
+const colorPreview = document.getElementById("muestraColor");
 const selectButton = document.getElementById("select-button");
 const selectedColorsContainer = document.getElementById("selected-colors-container");
 const deleteButton = document.getElementById("delete-button");
@@ -10,10 +10,25 @@ function changeColor() {
   const selectedColor = colorPicker.value;
   colorPreview.style.backgroundColor = selectedColor;
 
-  if (selectedColor && !isSelected(selectedColor) && selectedColors.length < 6) {
+  const difficulty = sessionStorage.getItem("difficulty");
+
+  if (selectedColor && !isSelected(selectedColor) && selectedColors.length < getMaximumColors(difficulty)) {
     selectButton.disabled = false;
   } else {
     selectButton.disabled = true;
+  }
+}
+
+function getMaximumColors(difficulty) {
+  switch (difficulty) {
+    case "facil":
+      return 4;
+    case "intermedio":
+      return 5;
+    case "dificil":
+      return 6;
+    default:
+      return 4;
   }
 }
 
@@ -25,14 +40,16 @@ function isSelected(color) {
 
 function handleSelect() {
   const selectedColor = colorPicker.value;
-  if (selectedColor && !isSelected(selectedColor) && selectedColors.length < 6) {
+  const difficulty = sessionStorage.getItem("difficulty");
+
+  if (selectedColor && !isSelected(selectedColor) && selectedColors.length < getMaximumColors(difficulty)) {
     selectedColors.push(selectedColor);
     colorPicker.value = ""; // Limpiar el selector de colores
     displaySelectedColors();
-    if (selectedColors.length === 6) {
+    if (selectedColors.length === getMaximumColors(difficulty)) {
       selectButton.disabled = true;
       sessionStorage.setItem("selectedColors", JSON.stringify(selectedColors));
-      window.location.href = "https://www.example.com"; // Reemplaza con tu enlace deseado
+      window.location.href = "URL_DESTINO"; // Reemplaza "URL_DESTINO" con la URL a la que deseas redirigir
     }
   }
 }
