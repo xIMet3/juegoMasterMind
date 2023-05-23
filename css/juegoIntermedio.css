@@ -50,7 +50,7 @@ body {
   align-items: center;
   height: 3.125em;
   width: 15em;
-  background-color: #424242;
+  background-color:;
   border-radius: 0.625em;
 }
 
@@ -156,7 +156,6 @@ body {
   transform: scale(1.2);
 }
 
-
 #aceptar1 {
   width: 3em;
   height: 3em;
@@ -176,6 +175,42 @@ body {
   background-color: white;
   user-select: none;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Estilos para el mensaje de victoria 
+.victory-message {
+  color: #4caf50;
+  font-size: 1.2em;
+  margin-top: 1em;
+}
+
+/* Estilos para el mensaje de derrota 
+.defeat-message {
+  color: #f44336;
+  font-size: 1.2em;
+  margin-top: 1em;
+}*/
 
  
   
