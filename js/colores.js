@@ -12,7 +12,7 @@ function changeColor() {
 
   const difficulty = sessionStorage.getItem("difficulty");
 
-  if (selectedColor && !isSelected(selectedColor) && selectedColors.length < getMaximumColors(difficulty)) {
+  if (selectedColor && !isSelected(selectedColor) && colores123456.length < getMaximumColors(difficulty)) {
     selectButton.disabled = false;
   } else {
     selectButton.disabled = true;
@@ -32,31 +32,32 @@ function getMaximumColors(difficulty) {
   }
 }
 
-let selectedColors = [];
+let colores123456 = [];
 
 function isSelected(color) {
-  return selectedColors.includes(color);
+  return colores123456.some(obj => obj.nombre === color);
 }
 
 function handleSelect() {
   const selectedColor = colorPicker.value;
   const difficulty = sessionStorage.getItem("difficulty");
 
-  if (selectedColor && !isSelected(selectedColor) && selectedColors.length < getMaximumColors(difficulty)) {
-    selectedColors.push(selectedColor);
+  if (selectedColor && !isSelected(selectedColor) && colores123456.length < getMaximumColors(difficulty)) {
+    const colorName = `color-a${colores123456.length + 1}`;
+    colores123456.push({ nombre: colorName, color: selectedColor });
     colorPicker.value = ""; // Limpiar el selector de colores
     displaySelectedColors();
-    if (selectedColors.length === getMaximumColors(difficulty)) {
+    if (colores123456.length === getMaximumColors(difficulty)) {
       selectButton.disabled = true;
-      sessionStorage.setItem("selectedColors", JSON.stringify(selectedColors));
+      sessionStorage.setItem("colores123456", JSON.stringify(colores123456));
       window.location.href = "../pages/juegoIntermedio.html";
     }
   }
 }
 
 function handleDelete() {
-  if (selectedColors.length > 0) {
-    selectedColors.pop();
+  if (colores123456.length > 0) {
+    colores123456.pop();
     displaySelectedColors();
     selectButton.disabled = false;
   }
@@ -65,9 +66,9 @@ function handleDelete() {
 function displaySelectedColors() {
   selectedColorsContainer.innerHTML = "";
 
-  for (let i = 0; i < selectedColors.length; i++) {
+  for (let i = 0; i < colores123456.length; i++) {
     const colorElement = document.createElement("div");
-    colorElement.style.backgroundColor = selectedColors[i];
+    colorElement.style.backgroundColor = colores123456[i].color;
     colorElement.className = "selected-color";
     selectedColorsContainer.appendChild(colorElement);
   }
@@ -78,10 +79,10 @@ deleteButton.addEventListener("click", handleDelete);
 
 // Mostrar los colores seleccionados al cargar la página
 window.addEventListener("load", () => {
-  const storedColors = JSON.parse(sessionStorage.getItem("selectedColors"));
+  const storedColors = JSON.parse(sessionStorage.getItem("colores123456"));
 
   if (storedColors && storedColors.length > 0) {
-    selectedColors = storedColors;
+    colores123456 = storedColors;
     displaySelectedColors();
   }
 });
