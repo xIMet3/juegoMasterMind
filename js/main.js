@@ -1,8 +1,8 @@
 // Recibimos el array de colores del sessionStorage, esto debería devolver solo un array con los color
-let colores = JSON.parse(sessionStorage.getItem('colores123456'));
+let colores = JSON.parse(sessionStorage.getItem('selectedColors'));
 console.log(colores);
 
-// Esto te lo puedes cargar cuando devulvas solo el array de colores
+// Esto se puede borrar cuando devuelva solo el array de colores
 let coloresArray = colores.map((color) => {
   return color.color;
 });
@@ -24,5 +24,13 @@ let coloresSecretosHTMLElementsArray = Array.from(coloresSecretosHTMLElements);
 console.log(coloresSecretosHTMLElementsArray);
 // Cambia el color de los elementos de la combinacion secreta
 coloresSecretosHTMLElementsArray.map((spanColor, contador) => {
+  spanColor.style.backgroundColor = coloresArray[contador];
+})
+// Esto son cada uno de los elementos HTML de los colores seleccionados
+const coloresSeleccionados = document.querySelectorAll(".color-seleccionado");
+// Lo pasa desde NodeList a Array
+const coloresSeleccionadosArray = Array.from(coloresSeleccionados);
+// Cambia el color de los elementos de los botones
+coloresSeleccionadosArray.map((spanColor, contador) => {
   spanColor.style.backgroundColor = coloresArray[contador];
 })

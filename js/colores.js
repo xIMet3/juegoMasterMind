@@ -4,7 +4,11 @@ const selectButton = document.getElementById("select-button");
 const selectedColorsContainer = document.getElementById("selected-colors-container");
 const deleteButton = document.getElementById("delete-button");
 
+const selectedColors = [];
+
 colorPicker.addEventListener("change", changeColor);
+selectButton.addEventListener("click", handleSelect);
+deleteButton.addEventListener("click", handleDelete);
 
 function changeColor() {
   const selectedColor = colorPicker.value;
@@ -12,7 +16,7 @@ function changeColor() {
 
   const difficulty = sessionStorage.getItem("difficulty");
 
-  if (selectedColor && !isSelected(selectedColor) && colores123456.length < getMaximumColors(difficulty)) {
+  if (selectedColor && !isSelected(selectedColor) && selectedColors.length < getMaximumColors(difficulty)) {
     selectButton.disabled = false;
   } else {
     selectButton.disabled = true;
@@ -32,32 +36,29 @@ function getMaximumColors(difficulty) {
   }
 }
 
-let colores123456 = [];
-
 function isSelected(color) {
-  return colores123456.some(obj => obj.nombre === color);
+  return selectedColors.includes(color);
 }
 
 function handleSelect() {
   const selectedColor = colorPicker.value;
   const difficulty = sessionStorage.getItem("difficulty");
 
-  if (selectedColor && !isSelected(selectedColor) && colores123456.length < getMaximumColors(difficulty)) {
-    const colorName = `color-a${colores123456.length + 1}`;
-    colores123456.push({ nombre: colorName, color: selectedColor });
+  if (selectedColor && !isSelected(selectedColor) && selectedColors.length < getMaximumColors(difficulty)) {
+    selectedColors.push(selectedColor);
     colorPicker.value = ""; // Limpiar el selector de colores
     displaySelectedColors();
-    if (colores123456.length === getMaximumColors(difficulty)) {
+    if (selectedColors.length === getMaximumColors(difficulty)) {
       selectButton.disabled = true;
-      sessionStorage.setItem("colores123456", JSON.stringify(colores123456));
+      sessionStorage.setItem("colores123456", JSON.stringify(selectedColors));
       window.location.href = "../pages/juegoIntermedio.html";
     }
   }
 }
 
 function handleDelete() {
-  if (colores123456.length > 0) {
-    colores123456.pop();
+  if (selectedColors.length > 0) {
+    selectedColors.pop();
     displaySelectedColors();
     selectButton.disabled = false;
   }
@@ -66,23 +67,20 @@ function handleDelete() {
 function displaySelectedColors() {
   selectedColorsContainer.innerHTML = "";
 
-  for (let i = 0; i < colores123456.length; i++) {
+  for (let i = 0; i < selectedColors.length; i++) {
     const colorElement = document.createElement("div");
-    colorElement.style.backgroundColor = colores123456[i].color;
+    colorElement.style.backgroundColor = selectedColors[i];
     colorElement.className = "selected-color";
     selectedColorsContainer.appendChild(colorElement);
   }
 }
-
-selectButton.addEventListener("click", handleSelect);
-deleteButton.addEventListener("click", handleDelete);
 
 // Mostrar los colores seleccionados al cargar la página
 window.addEventListener("load", () => {
   const storedColors = JSON.parse(sessionStorage.getItem("colores123456"));
 
   if (storedColors && storedColors.length > 0) {
-    colores123456 = storedColors;
+    selectedColors.push(...storedColors);
     displaySelectedColors();
   }
 });
