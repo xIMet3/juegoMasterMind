@@ -77,7 +77,7 @@ function displaySelectedColors() {
 
 // Mostrar los colores seleccionados al cargar la página
 window.addEventListener("load", () => {
-  const storedColors = JSON.parse(sessionStorage.getItem("colores123456"));
+  const storedColors = JSON.parse(sessionStorage.getItem("selectedColors"));
 
   if (storedColors && storedColors.length > 0) {
     selectedColors.push(...storedColors);
