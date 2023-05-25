@@ -17,17 +17,14 @@ body {
 }
 
 /* Fondo del tablero imitacion madera */
-.partesuperior,
-.centrotablero,
-.bottom {
+.partesuperior, .centrotablero, .bottom {
   margin: 0;
   background-image: url(../img/fondoMaderaClara.jpg);
   background-repeat: no-repeat;
   background-size: cover;
 }
 
-.partesuperior,
-.bottom {
+.partesuperior, .bottom {
   width: 90%;
   max-width: 22em;
   height: 4.6875em;
@@ -89,32 +86,14 @@ body {
   height: 35em;
 }
 
-.dots1,
-.dots2,
-.dots3,
-.dots4,
-.dots5,
-.dots6,
-.dots7,
-.dots8,
-.dots9,
-.dots10 {
+.dots1, .dots2, .dots3, .dots4, .dots5, .dots6, .dots7, .dots8, .dots9, .dots10 {
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr 1fr;
   padding: 0.3125em 0.625em;
 }
 /* El "> div" lo uso para que afecte tambien a los hijos de este */
-.dots1 > div,
-.dots2 > div,
-.dots3 > div,
-.dots4 > div,
-.dots5 > div,
-.dots6 > div,
-.dots7 > div,
-.dots8 > div,
-.dots9 > div,
-.dots10 > div {
+.dots1 > div, .dots2 > div, .dots3 > div, .dots4 > div, .dots5 > div, .dots6 > div, .dots7 > div, .dots8 > div, .dots9 > div, .dots10 > div {
   width: 0.63em;
   height: 0.63em;
   border: 0.125em solid black;
