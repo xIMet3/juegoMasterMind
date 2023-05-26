@@ -60,6 +60,37 @@ botonBorrar.addEventListener('click', () => {
     indiceElementoActual--;
   }
 });
+document.querySelector('#aceptar1').addEventListener('click', compararCombinacion);
+
+function compararCombinacion() {
+  const fila = document.querySelectorAll('.fila-1'); // Obtener los elementos de la fila actual
+  const coloresFila = Array.from(fila).map(elemento => elemento.style.backgroundColor); // Obtener los colores de la fila actual
+
+  const coloresSecretos = coloresSecretosHTMLElementsArray.map(elemento => elemento.style.backgroundColor); // Obtener los colores de los elementos secretos
+
+  let coincidenColoresPosicion = 0;
+  let coincidenColores = 0;
+
+  for (let i = 0; i < coloresFila.length; i++) {
+    if (coloresFila[i] === coloresSecretos[i]) {
+      coincidenColoresPosicion++;
+      document.getElementsByClassName(`dots-fila-1`)[i].style.backgroundColor = 'black'; // Pintar el elemento de dots-fila-1 en negro
+    } else if (coloresSecretos.includes(coloresFila[i])) {
+      coincidenColores++;
+      document.getElementsByClassName(`dots-fila-1`)[i].style.backgroundColor = 'white'; // Pintar el elemento de dots-fila-1 en blanco
+    }
+  }
+
+  console.log(`Coinciden ${coincidenColoresPosicion} colores en posición y ${coincidenColores} colores solo en color.`);
+
+  if (coincidenColoresPosicion === coloresFila.length) {
+    console.log('¡La combinación es correcta en color y posición!');
+    // Redirigir a otra página aquí
+  } else {
+    console.log('La combinación no es correcta en color y posición.');
+    // Bloquear la fila y pasar a la siguiente aquí
+  }
+}
 
 
 
