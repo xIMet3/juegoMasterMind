@@ -32,6 +32,7 @@ coloresSeleccionados.forEach((spanColor, index) => {
 // BOTON BORRAR
 // Funcion del boton borrar.
 const botones = document.querySelectorAll('.color-seleccionado');
+let elementosFilaActual = document.querySelectorAll(`.fila-${filaActual}`);
 const elementosPintados = new Set();
 let indiceElementoActual = 0;
 
@@ -39,18 +40,17 @@ botones.forEach((boton) => {
   boton.addEventListener('click', () => {
     const colorSeleccionado = boton.style.backgroundColor;
 
-    const elementosFila = document.querySelectorAll(`.fila-${filaActual}`);
-    if (elementosPintados.has(elementosFila[indiceElementoActual])) {
+    if (elementosPintados.has(elementosFilaActual[indiceElementoActual])) {
       return;
     }
 
-    elementosFila[indiceElementoActual].style.backgroundColor = colorSeleccionado;
-    elementosPintados.add(elementosFila[indiceElementoActual]);
+    elementosFilaActual[indiceElementoActual].style.backgroundColor = colorSeleccionado;
+    elementosPintados.add(elementosFilaActual[indiceElementoActual]);
 
     indiceElementoActual++;
 
-    if (indiceElementoActual === elementosFila.length) {
-      console.log(`Se han pintado todos los elementos de la fila-${filaActual}`);
+    if (indiceElementoActual === elementosFilaActual.length) {
+      console.log(`Se han pintado todos los elementos de fila-${filaActual}`);
     }
   });
 });
@@ -58,9 +58,8 @@ botones.forEach((boton) => {
 const botonBorrar = document.querySelector('.borrar');
 
 botonBorrar.addEventListener('click', () => {
-  const elementosFila = document.querySelectorAll(`.fila-${filaActual}`);
-  if (elementosPintados.size > 0 && indiceElementoActual > 0) {
-    const ultimoElementoPintado = elementosFila[indiceElementoActual - 1];
+  if (elementosPintados.size > 0) {
+    const ultimoElementoPintado = elementosFilaActual[indiceElementoActual - 1];
     ultimoElementoPintado.style.backgroundColor = '';
 
     elementosPintados.delete(ultimoElementoPintado);
@@ -70,6 +69,8 @@ botonBorrar.addEventListener('click', () => {
 
 document.querySelector('#aceptar1').addEventListener('click', () => {
   compararCombinacion();
+  bloquearFilaActual();
+  pasarSiguienteFila();
 });
 
 function bloquearFilaActual() {
@@ -86,10 +87,12 @@ function pasarSiguienteFila() {
     return;
   }
 
-  const elementosFila = document.querySelectorAll(`.fila-${filaActual}`);
-  elementosFila.forEach(elemento => {
+  elementosFilaActual = document.querySelectorAll(`.fila-${filaActual}`);
+  elementosFilaActual.forEach(elemento => {
     elemento.style.pointerEvents = 'auto'; // Habilitar la interacción con los elementos de la siguiente fila
   });
+
+  indiceElementoActual = 0; // Restablecer el índice del elemento actual a cero
 }
 
 function compararCombinacion() {
@@ -118,11 +121,8 @@ function compararCombinacion() {
     // Redirigir a otra página aquí
   } else {
     console.log('La combinación no es correcta en color y posición.');
-    bloquearFilaActual();
-    pasarSiguienteFila();
   }
 }
-
 
 
 
