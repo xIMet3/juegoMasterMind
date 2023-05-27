@@ -1,12 +1,17 @@
+// Variables globales
+let filaActual = 1;
+const maxFilas = 10;
+
 // COMBINACION SECRETA ALEATORIA
 // Recoge el array de colores del sessionStorage.
 let colores = JSON.parse(sessionStorage.getItem('colores123456'));
 // Crea la combinacion aleatoria.
 let combinacionSecreta = [];
-for(let i = 0; i < colores.length; i++) {
-  let randomIndex = Math.floor( Math.random() * colores.length);
+for (let i = 0; i < colores.length; i++) {
+  let randomIndex = Math.floor(Math.random() * colores.length);
   combinacionSecreta.push(colores[randomIndex]);
 }
+
 // BOTONES CON LOS COLORES
 // Esto son todos los elementos span de .combsecreta
 let coloresSecretosHTMLElements = document.querySelectorAll('.combsecreta .color-secreto');
@@ -23,10 +28,10 @@ const coloresSeleccionados = document.querySelectorAll(".color-seleccionado");
 coloresSeleccionados.forEach((spanColor, index) => {
   spanColor.style.backgroundColor = colores[index];
 });
+
 // BOTON BORRAR
 // Funcion del boton borrar.
 const botones = document.querySelectorAll('.color-seleccionado');
-const elementosFila1 = document.querySelectorAll('.fila-1');
 const elementosPintados = new Set();
 let indiceElementoActual = 0;
 
@@ -34,17 +39,18 @@ botones.forEach((boton) => {
   boton.addEventListener('click', () => {
     const colorSeleccionado = boton.style.backgroundColor;
 
-    if (elementosPintados.has(elementosFila1[indiceElementoActual])) {
+    const elementosFila = document.querySelectorAll(`.fila-${filaActual}`);
+    if (elementosPintados.has(elementosFila[indiceElementoActual])) {
       return;
     }
 
-    elementosFila1[indiceElementoActual].style.backgroundColor = colorSeleccionado;
-    elementosPintados.add(elementosFila1[indiceElementoActual]);
+    elementosFila[indiceElementoActual].style.backgroundColor = colorSeleccionado;
+    elementosPintados.add(elementosFila[indiceElementoActual]);
 
     indiceElementoActual++;
 
-    if (indiceElementoActual === elementosFila1.length) {
-      console.log('Se han pintado todos los elementos de fila-1');
+    if (indiceElementoActual === elementosFila.length) {
+      console.log(`Se han pintado todos los elementos de la fila-${filaActual}`);
     }
   });
 });
@@ -52,18 +58,42 @@ botones.forEach((boton) => {
 const botonBorrar = document.querySelector('.borrar');
 
 botonBorrar.addEventListener('click', () => {
-  if (elementosPintados.size > 0) {
-    const ultimoElementoPintado = elementosFila1[indiceElementoActual - 1];
+  const elementosFila = document.querySelectorAll(`.fila-${filaActual}`);
+  if (elementosPintados.size > 0 && indiceElementoActual > 0) {
+    const ultimoElementoPintado = elementosFila[indiceElementoActual - 1];
     ultimoElementoPintado.style.backgroundColor = '';
 
     elementosPintados.delete(ultimoElementoPintado);
     indiceElementoActual--;
   }
 });
-document.querySelector('#aceptar1').addEventListener('click', compararCombinacion);
+
+document.querySelector('#aceptar1').addEventListener('click', () => {
+  compararCombinacion();
+});
+
+function bloquearFilaActual() {
+  const elementosFila = document.querySelectorAll(`.fila-${filaActual}`);
+  elementosFila.forEach(elemento => {
+    elemento.style.pointerEvents = 'none'; // Desactivar la interacción con los elementos de la fila actual
+  });
+}
+
+function pasarSiguienteFila() {
+  filaActual++;
+  if (filaActual > maxFilas) {
+    console.log('Has alcanzado el máximo de filas disponibles.'); // Mostrar mensaje de que se alcanzó el máximo de filas
+    return;
+  }
+
+  const elementosFila = document.querySelectorAll(`.fila-${filaActual}`);
+  elementosFila.forEach(elemento => {
+    elemento.style.pointerEvents = 'auto'; // Habilitar la interacción con los elementos de la siguiente fila
+  });
+}
 
 function compararCombinacion() {
-  const fila = document.querySelectorAll('.fila-1'); // Obtener los elementos de la fila actual
+  const fila = document.querySelectorAll(`.fila-${filaActual}`); // Obtener los elementos de la fila actual
   const coloresFila = Array.from(fila).map(elemento => elemento.style.backgroundColor); // Obtener los colores de la fila actual
 
   const coloresSecretos = coloresSecretosHTMLElementsArray.map(elemento => elemento.style.backgroundColor); // Obtener los colores de los elementos secretos
@@ -74,10 +104,10 @@ function compararCombinacion() {
   for (let i = 0; i < coloresFila.length; i++) {
     if (coloresFila[i] === coloresSecretos[i]) {
       coincidenColoresPosicion++;
-      document.getElementsByClassName(`dots-fila-1`)[i].style.backgroundColor = 'black'; // Pintar el elemento de dots-fila-1 en negro
+      document.getElementsByClassName(`dots-fila-${filaActual}`)[i].style.backgroundColor = 'black'; // Pintar el elemento de dots-fila-1 en negro
     } else if (coloresSecretos.includes(coloresFila[i])) {
       coincidenColores++;
-      document.getElementsByClassName(`dots-fila-1`)[i].style.backgroundColor = 'white'; // Pintar el elemento de dots-fila-1 en blanco
+      document.getElementsByClassName(`dots-fila-${filaActual}`)[i].style.backgroundColor = 'white'; // Pintar el elemento de dots-fila-1 en blanco
     }
   }
 
@@ -88,9 +118,11 @@ function compararCombinacion() {
     // Redirigir a otra página aquí
   } else {
     console.log('La combinación no es correcta en color y posición.');
-    // Bloquear la fila y pasar a la siguiente aquí
+    bloquearFilaActual();
+    pasarSiguienteFila();
   }
 }
+
 
 
 
