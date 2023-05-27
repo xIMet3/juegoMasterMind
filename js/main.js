@@ -66,33 +66,42 @@ botonBorrar.addEventListener('click', () => {
     indiceElementoActual--;
   }
 });
-
+//BOTON ACEPTAR (CHECK)
+//Al pulsar el boton aceptar comprueba si la combinacion proporcionada es igual a la combinacion
+//secreta aleatoria, si es asi redirige a la pagina de 'winner' y de no ser asi bloquea la fila y
+//pasa a la siguiente fila, si se acaban las filas sin haber acertado la combinacion redirige a la
+//pagina 'loser'
 document.querySelector('#aceptar1').addEventListener('click', () => {
   compararCombinacion();
   bloquearFilaActual();
   pasarSiguienteFila();
 });
 
+// Desactiva la fila que se acaba de completar para que no pueda ser modificada ni borrada
 function bloquearFilaActual() {
   const elementosFila = document.querySelectorAll(`.fila-${filaActual}`);
   elementosFila.forEach(elemento => {
-    elemento.style.pointerEvents = 'none'; // Desactivar la interacción con los elementos de la fila actual
+    elemento.style.pointerEvents = 'none';
   });
 }
 
 function pasarSiguienteFila() {
   filaActual++;
   if (filaActual > maxFilas) {
-    console.log('Has alcanzado el máximo de filas disponibles.'); // Mostrar mensaje de que se alcanzó el máximo de filas
+    console.log('Has alcanzado el máximo de filas disponibles.');
+    // Redirige a la pagina 'loser'
+    window.location.href = 'loser.html';
     return;
   }
 
+  // Habilita los elementos de la siguiente fila
   elementosFilaActual = document.querySelectorAll(`.fila-${filaActual}`);
   elementosFilaActual.forEach(elemento => {
-    elemento.style.pointerEvents = 'auto'; // Habilitar la interacción con los elementos de la siguiente fila
+    elemento.style.pointerEvents = 'auto'; 
   });
 
-  indiceElementoActual = 0; // Restablecer el índice del elemento actual a cero
+  // Restablecer el índice del elemento actual a cero
+  indiceElementoActual = 0; 
 }
 
 function compararCombinacion() {
@@ -107,23 +116,22 @@ function compararCombinacion() {
   for (let i = 0; i < coloresFila.length; i++) {
     if (coloresFila[i] === coloresSecretos[i]) {
       coincidenColoresPosicion++;
-      document.getElementsByClassName(`dots-fila-${filaActual}`)[i].style.backgroundColor = 'black'; // Pintar el elemento de dots-fila-1 en negro
+      // Pintar el elemento de dots-fila-1 en negro
+      document.getElementsByClassName(`dots-fila-${filaActual}`)[i].style.backgroundColor = 'black'; 
     } else if (coloresSecretos.includes(coloresFila[i])) {
       coincidenColores++;
-      document.getElementsByClassName(`dots-fila-${filaActual}`)[i].style.backgroundColor = 'white'; // Pintar el elemento de dots-fila-1 en blanco
+      // Pinta los elementos de dots-fila-1 en blanco
+      document.getElementsByClassName(`dots-fila-${filaActual}`)[i].style.backgroundColor = 'white';
     }
   }
 
   console.log(`Coinciden ${coincidenColoresPosicion} colores en posición y ${coincidenColores} colores solo en color.`);
 
   if (coincidenColoresPosicion === coloresFila.length) {
-    console.log('¡La combinación es correcta en color y posición!');
-    // Redirigir a otra página aquí
+    console.log('¡La combinación es correcta !');
+    // Redirigir a la pagina de 'winner'
+    window.location.href = 'winner.html';
   } else {
-    console.log('La combinación no es correcta en color y posición.');
+    console.log('La combinación no es correcta.');
   }
 }
-
-
-
-
