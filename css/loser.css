@@ -64,3 +64,10 @@ body {
       background-position: center;
     }
   }
+
+  .volverAjugar {
+    background-color: #f24d8c;
+    margin-top: 3em;
+    font-family: 'Times New Roman', Times, serif;
+    color: white;
+  }
