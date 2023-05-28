@@ -13,7 +13,7 @@ body {
   padding: 0;
 }
 
-/* Div superio que contiene el nombre de cabecera*/
+/* Div superior que contiene el nombre de cabecera */
 .fondoprincipal {
   position: relative;
   background-color: black;
@@ -25,7 +25,7 @@ body {
 }
 
 .nombrecabecera {
-  height: 50%;
+  height: 40%;
 }
 
 #fondocalamar {
@@ -52,7 +52,7 @@ body {
 .cabecera {
   height: 50%;
 }
-/* Div inferior que contiene la elección de dificultades*/
+/* Div inferior que contiene la elección de dificultades */
 #contenidoDificultades {
   height: 50%;
   display: flex;
@@ -61,12 +61,11 @@ body {
 }
 
 .dificultades {
-  height: 10em;
+  height: 15em;
   width: 70em;
   display: flex;
   align-items: center;
   justify-content: space-evenly;
-  margin-top: 2em;
   overflow: hidden;
 }
 /* Botones de dificultades */
@@ -76,4 +75,14 @@ body {
 
 .btn-link:hover {
   transform: scale(1.2);
+}
+
+.about {
+  font-family: 'Times New Roman', Times, serif;
+  background-color: #f24d8c;
+  color: white;
+  position: absolute;
+  bottom: 0.625em;
+  right: 0.625em;
+  padding: 0.625em;
 }
