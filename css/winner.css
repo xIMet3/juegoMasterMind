@@ -1,0 +1,59 @@
+body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    box-sizing: border-box;
+    max-width: 100%;
+}
+
+.paginaEntera {
+    height: 100vh;
+    max-width: 98%;
+    padding: 0;
+}
+
+.fila {
+    padding: 0;
+    margin: 0;
+    border: 0;
+}
+
+.columna {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#enhorabuena {
+    margin-top: 8em;
+    margin-bottom: 8em;
+}
+
+@media screen and (max-width: 767px) {
+    body {
+      background-image: url(../img/fondoCalamarMovilWinner.jpg);
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center;
+      overflow: hidden;
+    }
+  }
+  
+  @media screen and (min-width: 768px) and (max-width: 1200px) {
+    body {
+      background-image: url(../img/fondoCalamarTabletWinner.jpeg);
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center;
+      overflow: hidden;
+    }
+  }
+  
+  @media screen and (min-width: 1201px) {
+    body {
+      background-image: url(../img/fondoCalamarPcWinner.jpg);
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center;
+    }
+  }
