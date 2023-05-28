@@ -92,7 +92,7 @@ body {
   grid-template-rows: 1fr 1fr;
   padding: 0.3125em 0.625em;
 }
-/* El "> div" lo uso para que afecte tambien a los hijos de este */
+/* El "> div" lo uso para que afecte a los hijos de este */
 .dots1 > div, .dots2 > div, .dots3 > div, .dots4 > div, .dots5 > div, .dots6 > div, .dots7 > div, .dots8 > div, .dots9 > div, .dots10 > div {
   width: 0.63em;
   height: 0.63em;
