@@ -52,7 +52,7 @@
 #### <span style="font-family:Aria-lNarrow"> -Mastermind es actualmente una marca comercial propiedad de Pressman Toys; el origen puede derivar de un juego tradicional inglés denominado Toros y vacas, se jugaba sobre papel: los "toros" equivalían a las fichas negras, y las "vacas" a las blancas.
 
 #### <span style="font-family:Aria-lNarrow"> -En el museo del juguete de Dénia (Alicante) se expone este juego bajo el nombre comercial de Conygan. De la fábrica de juguetes Cayro y año de fabricación 1.965.
-
+![Tablero-Original](./img/tableroOriginalReadme.jpg)
 
 <br><br><br><br>
 
