@@ -1,4 +1,4 @@
-// Variables globales
+// Filas
 let filaActual = 1;
 const maxFilas = 10;
 
@@ -15,22 +15,22 @@ for (let i = 0; i < colores.length; i++) {
 // BOTONES CON LOS COLORES
 // Esto son todos los elementos span de .combsecreta
 let coloresSecretosHTMLElements = document.querySelectorAll('.combsecreta .color-secreto');
-// Lo pasamos de NodeList a Array
+// Se pasa de NodeList a Array
 let coloresSecretosHTMLElementsArray = Array.from(coloresSecretosHTMLElements);
 // Cambia el color de los elementos de la combinación secreta
 coloresSecretosHTMLElementsArray.forEach((spanColor, index) => {
   spanColor.style.backgroundColor = combinacionSecreta[index];
 });
 
-// Esto son cada uno de los elementos HTML de los colores seleccionados.
+// Esto son cada uno de los elementos HTML de los colores seleccionados
 const coloresSeleccionados = document.querySelectorAll(".color-seleccionado");
-// Cambia el color de los elementos de los botones
+// Cambia el color de los botones
 coloresSeleccionados.forEach((spanColor, index) => {
   spanColor.style.backgroundColor = colores[index];
 });
 
 // BOTON BORRAR
-// Funcion del boton borrar.
+// Funcion del boton borrar
 const botones = document.querySelectorAll('.color-seleccionado');
 let elementosFilaActual = document.querySelectorAll(`.fila-${filaActual}`);
 const elementosPintados = new Set();
@@ -66,15 +66,20 @@ botonBorrar.addEventListener('click', () => {
     indiceElementoActual--;
   }
 });
-//BOTON ACEPTAR (CHECK)
-//Al pulsar el boton aceptar comprueba si la combinacion proporcionada es igual a la combinacion
-//secreta aleatoria, si es asi redirige a la pagina de 'winner' y de no ser asi bloquea la fila y
-//pasa a la siguiente fila, si se acaban las filas sin haber acertado la combinacion redirige a la
-//pagina 'loser'
+
+// BOTON ACEPTAR (CHECK)
+// Al pulsar el boton aceptar comprueba si la combinacion proporcionada es igual a la combinacion
+// secreta aleatoria, si es asi redirige a la pagina de 'winner' y de no ser asi bloquea la fila y
+// pasa a la siguiente fila, si se acaban las filas sin haber acertado la combinacion redirige a la
+// pagina 'loser'
 document.querySelector('#aceptar1').addEventListener('click', () => {
-  compararCombinacion();
-  bloquearFilaActual();
-  pasarSiguienteFila();
+  if (indiceElementoActual === elementosFilaActual.length) {
+    compararCombinacion();
+    bloquearFilaActual();
+    pasarSiguienteFila();
+  } else {
+    console.log('Completa la fila antes de validar.');
+  }
 });
 
 // Desactiva la fila que se acaba de completar para que no pueda ser modificada ni borrada
@@ -100,15 +105,16 @@ function pasarSiguienteFila() {
     elemento.style.pointerEvents = 'auto'; 
   });
 
-  // Restablecer el índice del elemento actual a cero
+  // Restablece el índice a cero para empezar la linea desde el principio
   indiceElementoActual = 0; 
 }
 
+// Compara la jugada con la combinacion secreta aleatoria
 function compararCombinacion() {
-  const fila = document.querySelectorAll(`.fila-${filaActual}`); // Obtener los elementos de la fila actual
-  const coloresFila = Array.from(fila).map(elemento => elemento.style.backgroundColor); // Obtener los colores de la fila actual
+  const fila = document.querySelectorAll(`.fila-${filaActual}`);
+  const coloresFila = Array.from(fila).map(elemento => elemento.style.backgroundColor);
 
-  const coloresSecretos = coloresSecretosHTMLElementsArray.map(elemento => elemento.style.backgroundColor); // Obtener los colores de los elementos secretos
+  const coloresSecretos = coloresSecretosHTMLElementsArray.map(elemento => elemento.style.backgroundColor);
 
   let coincidenColoresPosicion = 0;
   let coincidenColores = 0;
@@ -116,11 +122,11 @@ function compararCombinacion() {
   for (let i = 0; i < coloresFila.length; i++) {
     if (coloresFila[i] === coloresSecretos[i]) {
       coincidenColoresPosicion++;
-      // Pintar el elemento de dots-fila-1 en negro
+      // Pinta el elemento dots-fila en negro
       document.getElementsByClassName(`dots-fila-${filaActual}`)[i].style.backgroundColor = 'black'; 
     } else if (coloresSecretos.includes(coloresFila[i])) {
       coincidenColores++;
-      // Pinta los elementos de dots-fila-1 en blanco
+      // Pinta los elementos dots-fila en blanco
       document.getElementsByClassName(`dots-fila-${filaActual}`)[i].style.backgroundColor = 'white';
     }
   }
@@ -135,3 +141,4 @@ function compararCombinacion() {
     console.log('La combinación no es correcta.');
   }
 }
+
