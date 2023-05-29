@@ -35,7 +35,7 @@ function getMaximumColors(difficulty) {
       return 4;
   }
 }
-
+// Busca el color en el array donde se guarda y comprueba que no se repita antes de añadirlo.
 function isSelected(color) {
   return selectedColors.includes(color);
 }
@@ -46,7 +46,7 @@ function handleSelect() {
 
   if (selectedColor && !isSelected(selectedColor) && selectedColors.length < getMaximumColors(difficulty)) {
     selectedColors.push(selectedColor);
-    colorPicker.value = ""; // Limpiar el selector de colores
+    colorPicker.value = "";
     displaySelectedColors();
     if (selectedColors.length === getMaximumColors(difficulty)) {
       selectButton.disabled = true;
