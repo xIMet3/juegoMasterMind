@@ -89,6 +89,9 @@ body {
 
 .parteBottom {
   display: flex;
-  justify-content: end;
-  position: fixed;
+  justify-content:flex-end;
+  height: 5em;
+  width: 5em;
+  background-color: red;
+  cursor: pointer;
 }
