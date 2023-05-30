@@ -89,16 +89,17 @@ function bloquearFilaActual() {
     elemento.style.pointerEvents = 'none';
   });
 }
-
+// Pasa a la siguiente fila. La ultima fila visible sera la ultima del tablero
 function pasarSiguienteFila() {
   filaActual++;
-  if (filaActual > maxFilas) {
+  const filasOcultas = difficulty === 'dificil' ? 4 : (difficulty === 'intermedio' ? 2 : 0);
+  const maxFilasVisible = maxFilas - filasOcultas;
+  if (filaActual > maxFilasVisible) {
     console.log('Has alcanzado el máximo de filas disponibles.');
-    // Redirige a la pagina 'loser'
-    window.location.href = 'loser.html';
+    // Redirige a la página 'loser'
+    window.location.href = '../pages/loser.html';
     return;
   }
-
   // Habilita los elementos de la siguiente fila
   elementosFilaActual = document.querySelectorAll(`.fila-${filaActual}`);
   elementosFilaActual.forEach(elemento => {
@@ -134,7 +135,7 @@ function compararCombinacion() {
   console.log(`Coinciden ${coincidenColoresPosicion} colores en posición y ${coincidenColores} colores solo en color.`);
 
   if (coincidenColoresPosicion === coloresFila.length) {
-    console.log('¡La combinación es correcta !');
+    console.log('¡La combinación es correcta!');
     // Redirigir a la pagina de 'winner'
     window.location.href = 'winner.html';
   } else {
@@ -142,3 +143,18 @@ function compararCombinacion() {
   }
 }
 
+// Obtener la dificultad del Session Storage
+const difficulty = sessionStorage.getItem('difficulty');
+
+// Oculta filas según la dificultad
+if (difficulty === 'facil') {
+  // No se ocultan filas adicionales, se muestran las 10 filas
+} else if (difficulty === 'intermedio') {
+  
+  const filasOcultas = document.querySelectorAll('.fila-9, .fila-10');
+  filasOcultas.forEach(fila => fila.style.display = 'none');
+} else if (difficulty === 'dificil') {
+
+  const filasOcultas = document.querySelectorAll('.fila-7, .fila-8, .fila-9, .fila-10');
+  filasOcultas.forEach(fila => fila.style.display = 'none');
+}
