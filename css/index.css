@@ -26,6 +26,7 @@ body {
 
 .nombrecabecera {
   height: 40%;
+  margin-left: 1em;
 }
 
 #fondocalamar {
@@ -58,6 +59,10 @@ body {
   display: flex;
   justify-content: center;
   align-items: end;
+}
+
+.textoDificultad{
+  margin-left: 1em;
 }
 
 .dificultades {
