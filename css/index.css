@@ -35,7 +35,7 @@ body {
   height: 100%;
   object-fit: cover;
 }
-/* Adaptando la imagen de fondo a los distintos tamaños de pantalla */
+/* ADAPTANDO LA IMAGEN A LAS PANTALLAS */
 @media only screen and (min-width: 1200px) {
   #fondocalamar {
     object-fit: unset;
@@ -53,7 +53,7 @@ body {
 .cabecera {
   height: 50%;
 }
-/* Div inferior que contiene la elección de dificultades */
+/* CONTIENE LA SELECCION DE DIFICULTADES */
 #contenidoDificultades {
   height: 50%;
   display: flex;

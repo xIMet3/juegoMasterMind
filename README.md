@@ -11,7 +11,8 @@
 ![Victoria](./img/victoriaReadme.png)
 ###### Página derrota
 ![Color-Picker](./img/derrotaReadme.png)
-<br>
+###### Instrucciones
+![Instrucciones](./img/imagenInstruccionesReadme.png)
 
 
 
@@ -56,7 +57,7 @@
 
 <br><br><br><br>
 
-### <span style= "color:#d11911">Desarrollo 🚧(aún en desarrollo)🚧.<a id="Desarrollo"></a>
+### <span style= "color:#d11911">Desarrollo<a id="Desarrollo"></a>
 
 <br>
 
@@ -64,8 +65,8 @@
 
 #### <span style="font-family:Aria-lNarrow"> El proyecto se basa en varias páginas enlazadas entre ellas y guardando la información en un Session Storage.
 #### <span style="font-family:Aria-lNarrow"> -La página principal que contiene la selección de la dificultad de juego y un botón que redirige a la página about que contiene las instrucciones de juego. Al escoger la dificultad redirige a la página que contiene la selección de colores.
-#### <span style="font-family:Aria-lNarrow"> - La página de selección de color contiene un color picker que al pulsar en el se despliega una paleta de colores en la que se escoge el color y pulsar el botón seleccionar para validar el color y se mostrará debajo la selección actual. Según la dificicultad (Fácil, intermedio y difícil) se tendrá escoger una cantidad específica de colores (4,5 y 6) respectivamente. No se podrá repetir ningún color. Al llegar a la cantidad de colores requerida redirigirá automaticamente al tablero de juego.
-#### <span style="font-family:Aria-lNarrow"> - El tablero tiene en la parte superior la combinación secreta aleatoria que estará oculta(actualmente está al descubierto para la comodidad del desarrollo) y se descubrirá al ganar o perder. El centro del tablero contiene todas las celdas que se van a ir llenando con cada jugada en orden de arriba a abajo. La parte de abajo contiene los botones con los colores elegidos previamente, un boton para borrar la selección de uno en uno y el botón de validar que habrá que pulsar al escoger todos los colores de cada fila para validar la jugada.
+#### <span style="font-family:Aria-lNarrow"> - La página de selección de color contiene un color picker que al pulsar en el se despliega una paleta de colores en la que se escoge el color y pulsar el botón seleccionar para validar el color y se mostrará debajo la selección actual. Según la dificicultad (Fácil, intermedio y difícil) se tendrá escoger una cantidad específica de colores (4, 5 y 6) respectivamente. No se podrá repetir ningún color. Al llegar a la cantidad de colores requerida redirigirá automaticamente al tablero de juego.
+#### <span style="font-family:Aria-lNarrow"> - El tablero tiene en la parte superior la combinación secreta aleatoria que estará oculta y se descubrirá al ganar o perder. El centro del tablero contiene todas las celdas que se van a ir llenando con cada jugada en orden de arriba a abajo, según la dificultad seleccionada mostrará 10 filas(fácil), 8 filas(intermedio) ó 6 filas(difícil). La parte de abajo contiene los botones con los colores elegidos previamente, un boton para borrar la selección de uno en uno y el botón de validar que habrá que pulsar al escoger todos los colores de cada fila para validar la jugada.
 #### <span style="font-family:Aria-lNarrow"> - Al ganar o perder redirigirá automaticamente a dos páginas con 2 mensajes distintos de victoria o derrota y un botón para volver a jugar que redirige a la página de selección de dificultad.
 
 <br> <br>

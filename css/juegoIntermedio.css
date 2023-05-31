@@ -16,7 +16,7 @@ body {
   flex-direction: column;
 }
 
-/* Fondo del tablero imitacion madera */
+/* FONDO DEL TABLERO IMITACION MADERA */
 .partesuperior, .centrotablero, .bottom {
   margin: 0;
   background-image: url(../img/fondoMaderaClara.jpg);
@@ -30,7 +30,7 @@ body {
   height: 4.6875em;
 }
 
-/* Parte superior que contiene el panel donde se mostrara la combinacion secreta */
+/* PARTE SUPERIOR QUE CONTIENE LA COMBINACION SECRETA ALEATORIA */
 .partesuperior {
   margin-top: 1.2em;
   border-bottom: 0.125em solid black;
@@ -64,7 +64,7 @@ body {
   display: block;
 }
 
-/* La cuadricula que se divide en 5 columnas y 10 filas */
+/* EL TABLERO SE DIVIDE EN 10 FILAS Y 5 COLUMNAS POR DEFECTO */
 .grid {
   width: 100%;
   height: 100%;
@@ -79,7 +79,7 @@ body {
   place-items: center;
 }
 
-/* Tablero central que contiene todas las casillas para los colores elegidos*/
+/* TABLERO CENTRAL */
 .centrotablero {
   width: 90%;
   max-width: 22em;
@@ -92,7 +92,7 @@ body {
   grid-template-rows: 1fr 1fr;
   padding: 0.3125em 0.625em;
 }
-/* El "> div" lo uso para que afecte a los hijos de este */
+/* AFECTA A LOS HIJOS DE ESTOS */
 .dots1 > div, .dots2 > div, .dots3 > div, .dots4 > div, .dots5 > div, .dots6 > div, .dots7 > div, .dots8 > div, .dots9 > div, .dots10 > div {
   width: 0.63em;
   height: 0.63em;
@@ -107,7 +107,7 @@ body {
   box-shadow: inset 0 0.0625em 0.0625em 0.03125em #070707;
 }
 
-/* Botones inferiores con selector de colores, borrar y aceptar */
+/* BOTONES INFERIORES */
 .bottom {
   margin-bottom: 3em;
   border-bottom: 0.3125em solid black;
@@ -154,8 +154,8 @@ body {
   background-color: white;
   user-select: none;
 }
-
+/* DESACTIVA LAS FILAS BLOQUEADAS*/
 .bloqueado {
-  pointer-events: none; /* Deshabilitar eventos de clic en los elementos bloqueados */
-  opacity: 0.5; /* Opacidad reducida para indicar que la fila está bloqueada */
+  pointer-events: none; 
+  opacity: 0.5;
 }

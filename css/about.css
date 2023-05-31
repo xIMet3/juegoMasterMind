@@ -9,7 +9,7 @@ body {
 
 #contenedor1 {
     padding: 0;
-    height: auto ;
+    height: 100vh;
     background-image: url(../img/fondoAboutPc.jpeg);
     background-repeat: no-repeat;
     background-size: cover;
@@ -24,7 +24,6 @@ body {
   }
 
 .cabecera {
-    height: ;
     width: 100%;
     display: flex;
     align-items: center;
@@ -48,20 +47,20 @@ h1 {
 }
 @media (max-width: 768px) {
 
-.centro {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    color: white;
-    background-color: black;
+    .centro {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        color: white;
+        background-color: black;
 }}
 
 
 h2 {
     font-weight: bold;
     font-family: "squidgame";
-    margin-top: 2em;
+    margin-top: 0.5em;
 }
 
 h5 {
@@ -78,7 +77,6 @@ h4 {
 }
 
 .footer {
-    height: 3em;
     font-family: 'squidgame';
     display: flex;
     align-items: center;
@@ -90,7 +88,6 @@ h4 {
 a {
     color: white;
     background-color: transparent;
-    height: 100%;
     width: 100%;
     margin: 0;
     padding: 1em;
@@ -102,18 +99,12 @@ a {
 
 @media (max-width: 768px) {
 
-a {
-    color: white;
-    background-color: black;
-    height: 100%;
-    width: 100%;
-    margin: 0;
-    padding: 0;    
-    padding: 1em;
-
+    a {
+        color: white;
+        background-color: black;
+        height: 100%;
+        width: 100%;
+        margin: 0;  
+        padding: 1em;
+    
 }}
-
-h3 {
-    padding: 1em;
-}
-

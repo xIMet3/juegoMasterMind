@@ -1,11 +1,11 @@
-// Filas
+// FILAS
 let filaActual = 1;
 const maxFilas = 10;
 
 // COMBINACION SECRETA ALEATORIA
-// Recoge el array de colores del sessionStorage.
+// RECOGE EL ARRAY DE COLORES DEL SESSION STORAGE
 let colores = JSON.parse(sessionStorage.getItem('colores123456'));
-// Crea la combinacion aleatoria.
+// CREA LA COMBINACION ALEATORIA
 let combinacionSecreta = [];
 for (let i = 0; i < colores.length; i++) {
   let randomIndex = Math.floor(Math.random() * colores.length);
@@ -13,24 +13,23 @@ for (let i = 0; i < colores.length; i++) {
 }
 
 // BOTONES CON LOS COLORES
-// Esto son todos los elementos span de .combsecreta
+// ESTOS SON TODOS LOS ELEMENTOS SPAN DE LA .combsecreta
 let coloresSecretosHTMLElements = document.querySelectorAll('.combsecreta .color-secreto');
-// Se pasa de NodeList a Array
+// SE PASA DE NODELIS A ARRAY
 let coloresSecretosHTMLElementsArray = Array.from(coloresSecretosHTMLElements);
-// Cambia el color de los elementos de la combinación secreta
+// CAMBIA EL COLOR DE LOS ELEMENTOS DE LA COMBINACION ALEATORIA POR COLORES ALEATORIOS DE LOS ELEGIDOS
 coloresSecretosHTMLElementsArray.forEach((spanColor, index) => {
   spanColor.style.backgroundColor = combinacionSecreta[index];
 });
 
-// Esto son cada uno de los elementos HTML de los colores seleccionados
+// ESTO SON CADA UNO DE LOS ELEMENTOS DEL COLOR SELECCIONADO
 const coloresSeleccionados = document.querySelectorAll(".color-seleccionado");
-// Cambia el color de los botones
+// CAMBIA EL COLOR DE LOS BOTONES
 coloresSeleccionados.forEach((spanColor, index) => {
   spanColor.style.backgroundColor = colores[index];
 });
 
 // BOTON BORRAR
-// Funcion del boton borrar
 const botones = document.querySelectorAll('.color-seleccionado');
 let elementosFilaActual = document.querySelectorAll(`.fila-${filaActual}`);
 const elementosPintados = new Set();
@@ -50,7 +49,6 @@ botones.forEach((boton) => {
     indiceElementoActual++;
 
     if (indiceElementoActual === elementosFilaActual.length) {
-      console.log(`Se han pintado todos los elementos de fila-${filaActual}`);
     }
   });
 });
@@ -68,53 +66,50 @@ botonBorrar.addEventListener('click', () => {
 });
 
 // BOTON ACEPTAR (CHECK)
-// Al pulsar el boton aceptar comprueba si la combinacion proporcionada es igual a la combinacion
-// secreta aleatoria, si es asi redirige a la pagina de 'winner' y de no ser asi bloquea la fila y
-// pasa a la siguiente fila, si se acaban las filas sin haber acertado la combinacion redirige a la
-// pagina 'loser'
+// AL PULSAR EL BOTON ACEPTAR COMPRUEBA SI LA COMBIACION PROPORCIONADA ES IGUAL A LA COMBINACION
+// SECRETA ALEATORIA, SI ES ASI REDIRIGE A LA PAGINA DE 'WINNER' Y DE NO SER ASI BLOQUEA LA FILA Y
+// PASA A LA SIGUIENTE FILA, SI SE ACABAN LAS FILAS SIN ACERTAR LA COMBINACION REDIRIGE A LA PAGINA 'LOSER'
 document.querySelector('#aceptar1').addEventListener('click', () => {
   if (indiceElementoActual === elementosFilaActual.length) {
     compararCombinacion();
     bloquearFilaActual();
     pasarSiguienteFila();
   } else {
-    console.log('Completa la fila antes de validar.');
   }
 });
 
-// Desactiva la fila que se acaba de completar para que no pueda ser modificada ni borrada
+// DESACTIVA LA FILA QUE SE ACABA DE COMPLETA PARA QUE NO PUEDA SER MODIFICADA NI BORRADA
 function bloquearFilaActual() {
   const elementosFila = document.querySelectorAll(`.fila-${filaActual}`);
   elementosFila.forEach(elemento => {
     elemento.style.pointerEvents = 'none';
   });
 }
-// Pasa a la siguiente fila. La ultima fila visible sera la ultima del tablero
+
+// PASA A LA SIGUIENTE FILA. LA ULTIMA FILA VISIBLE SERA LA ULTIMA DEL TABLERO
 function pasarSiguienteFila() {
   filaActual++;
   const filasOcultas = difficulty === 'dificil' ? 4 : (difficulty === 'intermedio' ? 2 : 0);
   const maxFilasVisible = maxFilas - filasOcultas;
   if (filaActual > maxFilasVisible) {
-    console.log('Has alcanzado el máximo de filas disponibles.');
-    // Redirige a la página 'loser'
+    // REDIRIGE A LA PAGINA LOSER
     window.location.href = '../pages/loser.html';
     return;
   }
-  // Habilita los elementos de la siguiente fila
+  // HABILITA LOS ELEMENTOS DE LA SIGUIENTE FILA
   elementosFilaActual = document.querySelectorAll(`.fila-${filaActual}`);
   elementosFilaActual.forEach(elemento => {
     elemento.style.pointerEvents = 'auto'; 
   });
 
-  // Restablece el índice a cero para empezar la linea desde el principio
+  // RESTABLECE EL INDICE A CERO PARA EMPEZAR LA LINEA DESDE EL PRINCIPIO
   indiceElementoActual = 0; 
 }
 
-// Compara la jugada con la combinacion secreta aleatoria
+// COMPARA LA JUGADA CON LA COMBINACION SECRETA ALEATORIA
 function compararCombinacion() {
   const fila = document.querySelectorAll(`.fila-${filaActual}`);
   const coloresFila = Array.from(fila).map(elemento => elemento.style.backgroundColor);
-
   const coloresSecretos = coloresSecretosHTMLElementsArray.map(elemento => elemento.style.backgroundColor);
 
   let coincidenColoresPosicion = 0;
@@ -123,30 +118,28 @@ function compararCombinacion() {
   for (let i = 0; i < coloresFila.length; i++) {
     if (coloresFila[i] === coloresSecretos[i]) {
       coincidenColoresPosicion++;
-      // Pinta el elemento dots-fila en negro
+      // PINTA LOS ELEMENTOS EN NEGRO
       document.getElementsByClassName(`dots-fila-${filaActual}`)[i].style.backgroundColor = 'black'; 
     } else if (coloresSecretos.includes(coloresFila[i])) {
       coincidenColores++;
-      // Pinta los elementos dots-fila en blanco
+      // PINTA LOS ELEMENTOS EN BLANCO
       document.getElementsByClassName(`dots-fila-${filaActual}`)[i].style.backgroundColor = 'white';
     }
   }
 
-  console.log(`Coinciden ${coincidenColoresPosicion} colores en posición y ${coincidenColores} colores solo en color.`);
-
   if (coincidenColoresPosicion === coloresFila.length) {
-    console.log('¡La combinación es correcta!');
-    // Redirigir a la pagina de 'winner'
+    // REDIRIGE A LA PAGINA 'WINNER'
     window.location.href = 'winner.html';
   } else {
-    console.log('La combinación no es correcta.');
+    console.log('La combinacion no es correcta.');
   }
 }
 
-// Coge la dificultad del Session Storage
+// COGE LA DIFICULTAD DEL SESSION STORAGE
 const difficulty = sessionStorage.getItem('difficulty');
 
-// Ocultar las filas adicionales según la dificultad seleccionada
+// Oculta las filas adicionales según la dificultad seleccionada
+// OCULTA LAS FILAS ADICIONALES SEGUN LA DIFICULTAD SELECCIONADA
 if (difficulty === 'facil') {
   
 } else if (difficulty === 'intermedio') {

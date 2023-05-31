@@ -3,18 +3,20 @@ const colorPreview = document.getElementById("muestraColor");
 const selectButton = document.getElementById("select-button");
 const selectedColorsContainer = document.getElementById("selected-colors-container");
 const deleteButton = document.getElementById("delete-button");
-
 const selectedColors = [];
 
 colorPicker.addEventListener("change", changeColor);
 selectButton.addEventListener("click", handleSelect);
 deleteButton.addEventListener("click", handleDelete);
 
+// CAMBIA SEGUN EL COLOR SELECCIONADO
 function changeColor() {
   const selectedColor = colorPicker.value;
   colorPreview.style.backgroundColor = selectedColor;
 
   const difficulty = sessionStorage.getItem("difficulty");
+
+  // COMPRUEBA QUE EL COLOR NO SE REPITA EN EL ARRAY Y EL MAXIMO DE COLORES QUE SE PUEDEN SELECCIONAR SEGUN LA DIFICULTAD
 
   if (selectedColor && !isSelected(selectedColor) && selectedColors.length < getMaximumColors(difficulty)) {
     selectButton.disabled = false;
@@ -22,7 +24,7 @@ function changeColor() {
     selectButton.disabled = true;
   }
 }
-
+// NUMERO DE COLORES QUE SE PUEDEN SELECCIONAR SEGUN LA DIFICULTAD
 function getMaximumColors(difficulty) {
   switch (difficulty) {
     case "facil":
@@ -35,7 +37,8 @@ function getMaximumColors(difficulty) {
       return 4;
   }
 }
-// Busca el color en el array donde se guarda y comprueba que no se repita antes de añadirlo.
+
+// BUSCA EL COLOR EN EL ARRAY DONDE SE GUARDA Y COMPRUEBA QUE NO SE REPITA EL COLOR ANTES DE AÑADIRLO
 function isSelected(color) {
   return selectedColors.includes(color);
 }
@@ -56,6 +59,7 @@ function handleSelect() {
   }
 }
 
+// MUESTRA LOS COLORES ELEGIDOS
 function handleDelete() {
   if (selectedColors.length > 0) {
     selectedColors.pop();
@@ -63,7 +67,6 @@ function handleDelete() {
     selectButton.disabled = false;
   }
 }
-
 function displaySelectedColors() {
   selectedColorsContainer.innerHTML = "";
 
@@ -75,7 +78,7 @@ function displaySelectedColors() {
   }
 }
 
-// Mostrar los colores seleccionados al cargar la página
+// MOSTRAR LOS COLORES SELECCIONADOS AL CARGAR LA PAGINA
 window.addEventListener("load", () => {
   const storedColors = JSON.parse(sessionStorage.getItem("selectedColors"));
 
