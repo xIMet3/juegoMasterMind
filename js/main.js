@@ -143,18 +143,22 @@ function compararCombinacion() {
   }
 }
 
-// Obtener la dificultad del Session Storage
+// Coge la dificultad del Session Storage
 const difficulty = sessionStorage.getItem('difficulty');
 
-// Oculta filas según la dificultad
+// Ocultar las filas adicionales según la dificultad seleccionada
 if (difficulty === 'facil') {
-  // No se ocultan filas adicionales, se muestran las 10 filas
+  
 } else if (difficulty === 'intermedio') {
   
   const filasOcultas = document.querySelectorAll('.fila-9, .fila-10');
   filasOcultas.forEach(fila => fila.style.display = 'none');
+  const dotsOcultos = document.querySelectorAll('.dots-fila-9, .dots-fila-10');
+  dotsOcultos.forEach(dots => dots.style.display = 'none');
 } else if (difficulty === 'dificil') {
-
+  
   const filasOcultas = document.querySelectorAll('.fila-7, .fila-8, .fila-9, .fila-10');
   filasOcultas.forEach(fila => fila.style.display = 'none');
+  const dotsOcultos = document.querySelectorAll('.dots-fila-7, .dots-fila-8, .dots-fila-9, .dots-fila-10');
+  dotsOcultos.forEach(dots => dots.style.display = 'none');
 }

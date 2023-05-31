@@ -9,6 +9,7 @@ body {
 
 #contenedor1 {
     padding: 0;
+    height: auto ;
     background-image: url(../img/fondoAboutPc.jpeg);
     background-repeat: no-repeat;
     background-size: cover;
@@ -23,7 +24,7 @@ body {
   }
 
 .cabecera {
-    height: 3em;
+    height: ;
     width: 100%;
     display: flex;
     align-items: center;
@@ -38,20 +39,37 @@ h1 {
 }
 
 .centro {
-    background-color: re;
-    min-height: 85.7vh;
     width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
     color: white;
+    background-color: transparent;
 }
+@media (max-width: 768px) {
+
+.centro {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: white;
+    background-color: black;
+}}
+
 
 h2 {
     font-weight: bold;
     font-family: "squidgame";
     margin-top: 2em;
 }
+
+h5 {
+margin: 0;
+padding: 0;
+padding: 1em;
+}
+
 
 h4 {
     font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
@@ -64,10 +82,39 @@ h4 {
     font-family: 'squidgame';
     display: flex;
     align-items: center;
-    justify-content: flex-end;
+    justify-content: center;
+    background-color: transparent;
+
 }
 
 a {
-    margin-right: 1em;
     color: white;
+    background-color: transparent;
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    padding: 1em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
 }
+
+@media (max-width: 768px) {
+
+a {
+    color: white;
+    background-color: black;
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;    
+    padding: 1em;
+
+}}
+
+h3 {
+    padding: 1em;
+}
+
